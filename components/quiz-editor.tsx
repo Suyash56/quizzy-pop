@@ -628,7 +628,7 @@ export function QuizEditor({
                       handleTitleBlur();
                     }
                   }}
-                  className="text-2xl font-bold border-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-0 p-0 h-auto bg-transparent"
+                  className="text-2xl font-bold border-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-0 p-0 pl-2 h-auto bg-transparent"
                   autoFocus
                 />
               ) : (

@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Trophy, Mail, Lock, AlertCircle } from "lucide-react";
+import { Trophy, Mail, Lock, AlertCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
 
 function LoginForm() {
@@ -33,7 +33,6 @@ function LoginForm() {
       email,
       password,
     });
-    setLoading(false);
 
     if (error) {
       setLoading(false);
@@ -76,7 +75,9 @@ function LoginForm() {
               QuizzyPop
             </h1>
           </div>
-          <p className="text-gray-600 text-sm">Welcome back! Sign in to continue</p>
+          <p className="text-gray-600 text-sm">
+            Welcome back! Sign in to continue
+          </p>
         </div>
 
         {/* Card */}
@@ -94,7 +95,10 @@ function LoginForm() {
 
           <div className="space-y-5">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+              <Label
+                htmlFor="email"
+                className="text-sm font-medium text-gray-700"
+              >
                 Email
               </Label>
               <div className="relative">
@@ -111,7 +115,10 @@ function LoginForm() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+              <Label
+                htmlFor="password"
+                className="text-sm font-medium text-gray-700"
+              >
                 Password
               </Label>
               <div className="relative">
@@ -132,7 +139,14 @@ function LoginForm() {
               onClick={handleLogin}
               className="w-full h-12 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-md hover:shadow-lg transition-all font-medium text-base"
             >
-              {loading ? "Signing in..." : "Sign In"}
+              {loading ? (
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Signing in...
+                </>
+              ) : (
+                "Sign In"
+              )}
             </Button>
 
             <div className="relative">
@@ -140,7 +154,9 @@ function LoginForm() {
                 <div className="w-full border-t border-gray-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                <span className="px-2 bg-white text-gray-500">
+                  Or continue with
+                </span>
               </div>
             </div>
 

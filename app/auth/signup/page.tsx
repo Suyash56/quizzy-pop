@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Trophy, Mail, Lock, AlertCircle, User } from "lucide-react";
+import { Trophy, Mail, Lock, AlertCircle, User, Loader2 } from "lucide-react";
 import Link from "next/link";
 
 export default function SignupPage() {
@@ -32,7 +32,6 @@ export default function SignupPage() {
         },
       },
     });
-    setLoading(false);
 
     if (error) {
       setLoading(false);
@@ -45,6 +44,7 @@ export default function SignupPage() {
       await supabase.auth.setSession(data.session);
       router.push("/dashboard");
     } else {
+      setLoading(false);
       setError("Please check your email to verify your account");
     }
   };
@@ -138,7 +138,14 @@ export default function SignupPage() {
               onClick={handleSignup}
               className="w-full h-12 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-md hover:shadow-lg transition-all font-medium text-base"
             >
-              {loading ? "Creating account..." : "Create Account"}
+              {loading ? (
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Creating account...
+                </>
+              ) : (
+                "Create Account"
+              )}
             </Button>
 
             <p className="text-center text-sm text-gray-600 pt-2">

@@ -54,6 +54,7 @@ export async function createQuiz(input: CreateQuizInput) {
       settings_json: {
         leaderboardEnabled: true,
         defaultTimer: 30,
+        participationEnabled: true,
       },
     })
     .select()
